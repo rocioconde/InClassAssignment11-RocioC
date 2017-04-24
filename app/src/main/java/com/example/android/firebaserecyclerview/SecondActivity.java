@@ -9,7 +9,6 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class SecondActivity extends AppCompatActivity {
@@ -18,7 +17,6 @@ public class SecondActivity extends AppCompatActivity {
     private EditText schoolName;
     private EditText totalEnrollment;
     private EditText yearOfFoundation;
-    private ArrayList<SchoolOfEducation> schools;
     private SchoolOfEducation school;
 
     @Override
@@ -80,7 +78,7 @@ public class SecondActivity extends AppCompatActivity {
         school.name = schoolName.getText().toString();
         school.totalEnrollment = Integer.parseInt(totalEnrollment.getText().toString());
         school.yearOfFoundation = Integer.parseInt(yearOfFoundation.getText().toString());
-
+        schoolReference.child(school.id).setValue(school);
     }
 }
 

@@ -33,18 +33,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        schoolOfEducationAdapter.cleanup();
-//    }
-//
-//
-//    public void addPerson(View view) {
-//        String id = UUID.randomUUID().toString();
-//        Random random = new Random();
-//        schoolReference.child(id).setValue(new SchoolOfEducation();
-//    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        schoolOfEducationAdapter.cleanup();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
