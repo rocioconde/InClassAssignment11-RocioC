@@ -25,7 +25,7 @@ public class SchoolOfEducationViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         cardView = (CardView) itemView.findViewById(R.id.card_view);
         schoolNameText = (TextView) itemView.findViewById(R.id.school_name);
-        schoolEnrollmentText = (TextView) itemView.findViewById(R.id.total_enrollment);
+        schoolEnrollmentText = (TextView) itemView.findViewById(R.id.school_enrollment);
         schoolYearOfFoundationText = (TextView) itemView.findViewById(R.id.school_year_of_foundation);
         this.context = itemView.getContext();
     }

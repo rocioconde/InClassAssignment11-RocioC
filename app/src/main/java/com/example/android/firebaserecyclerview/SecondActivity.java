@@ -1,5 +1,6 @@
 package com.example.android.firebaserecyclerview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -9,11 +10,14 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.UUID;
 
 public class SecondActivity extends AppCompatActivity {
 
     private DatabaseReference schoolReference = FirebaseDatabase.getInstance().getReference("school");
+    private ArrayList<SchoolOfEducation> schools = new ArrayList<>();
     private EditText schoolName;
     private EditText totalEnrollment;
     private EditText yearOfFoundation;
@@ -49,17 +53,28 @@ public class SecondActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.menu_item_save:
-                if (school == null)
-                    addSchool();
-                else
+                if (school == null) {
+                    String id = UUID.randomUUID().toString();
+                    Random random = new Random();
+                    String schoolName1 = schoolName.getText().toString();
+                    int enrollment = Integer.parseInt(totalEnrollment.getText().toString());
+                    int foundation = Integer.parseInt(yearOfFoundation.getText().toString());
+
+                    schoolReference.child(id).setValue(new SchoolOfEducation(id, schoolName1, enrollment, foundation));
+                } else {
                     saveSchool();
-                finish();
+                }
+
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.menu_item_delete:
                 if (school != null)
                     schoolReference.child(school.id).removeValue();
                 finish();
-
+//        Intent intent2 = new Intent(this, MainActivity.class);
+//        startActivity(intent2);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 
