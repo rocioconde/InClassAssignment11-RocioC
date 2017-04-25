@@ -24,9 +24,13 @@ public class SchoolOfEducation implements Serializable {
         this.yearOfFoundation = yearOfFoundation;
     }
 
-    public SchoolOfEducation(String name, int totalEnrollment, int yearOfFoundation) {
-        this.name = name;
-        this.totalEnrollment = totalEnrollment;
-        this.yearOfFoundation = yearOfFoundation;
+    @Override
+    public String toString() {
+        return "SchoolOfEducation{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", totalEnrollment=" + totalEnrollment +
+                ", yearOfFoundation=" + yearOfFoundation +
+                '}';
     }
 }

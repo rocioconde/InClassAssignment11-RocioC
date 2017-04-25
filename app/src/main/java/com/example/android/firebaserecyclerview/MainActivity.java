@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private SchoolOfEducationAdapter schoolOfEducationAdapter;
-
-
     private DatabaseReference schoolReference = FirebaseDatabase.getInstance().getReference("school");
 
 

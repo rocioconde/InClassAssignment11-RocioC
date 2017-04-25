@@ -37,7 +37,6 @@ public class SecondActivity extends AppCompatActivity {
             yearOfFoundation.setText(String.valueOf(school.yearOfFoundation));
         }
 
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,11 +49,12 @@ public class SecondActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.menu_item_save:
-                if (school != null)
+                if (school == null)
                     addSchool();
                 else
                     saveSchool();
                 finish();
+                return true;
             case R.id.menu_item_delete:
                 if (school != null)
                     schoolReference.child(school.id).removeValue();
@@ -75,6 +75,7 @@ public class SecondActivity extends AppCompatActivity {
 
 
     public void saveSchool() {
+
         school.name = schoolName.getText().toString();
         school.totalEnrollment = Integer.parseInt(totalEnrollment.getText().toString());
         school.yearOfFoundation = Integer.parseInt(yearOfFoundation.getText().toString());
